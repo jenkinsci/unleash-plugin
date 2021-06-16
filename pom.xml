@@ -59,7 +59,7 @@
     <version.commons-codec>1.13</version.commons-codec>
     <version.commons-io>2.6</version.commons-io>
     <version.commons-lang3>3.9</version.commons-lang3>
-    <version.credentials-plugin>2.3.1</version.credentials-plugin>
+    <version.credentials-plugin>2.3.19</version.credentials-plugin>
     <version.findbugs-maven-plugin>3.0.5</version.findbugs-maven-plugin>
     <version.httpclient>4.5.11</version.httpclient>
     <version.httpcore>4.4.13</version.httpcore>
