@@ -10,7 +10,7 @@ That plugin is providing significant advantage for a Maven release process versu
 
 See unleash-maven-plugin [Wiki](https://github.com/mavenplugins/unleash-maven-plugin/wiki) for details.
 
-# 🚀 Development Continued - Java 8, 11, 17, 21 Ready 🚀 
+# 🚀 Dev Continued - Java 8, 11, 17, 21 Ready 🚀 
 
 This plugin has **recovered** from deprecation tagged by 21-Dec-2022 since
 the [Apache Maven Unleash Plugin](https://github.com/mavenplugins/unleash-maven-plugin) did continue to be actively maintained.
