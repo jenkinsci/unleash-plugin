@@ -8,7 +8,7 @@
     <relativePath/>
   </parent>
 
-  <groupId>com.itemis.jenkins.plugins</groupId>
+  <groupId>io.jenkins.plugins</groupId>
   <artifactId>unleash</artifactId>
   <version>2.5.1-SNAPSHOT</version>
   <packaging>hpi</packaging>
