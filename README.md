@@ -39,17 +39,17 @@ Then you will see some input fields for basic settings. There you can
 add the required profiles and options for your release build. The goals
 are pre-defined because currently unleash:perform is the only goals that
 makes sense there.  
-![](docs/images/2016-08-25_14h50_44.png)
+![](docs/images/10_job_config_unleash.png)
 
 Clicking the Advanced... button shows some additional settings for
 workflow overriding, SCM-related settings and some checkboxes that
 affect the actual release form that we use later.  
-![](docs/images/2016-08-25_14h51_17.png)
+![](docs/images/20_job_config_unleash_advanced.png)
 
 The Hook Data section can then be used for really advanced stuff. If you
 f.i. extend the default workflow and add an exec-hook to the workflow,
 you will be able to provide data for the hook execution at this point.  
-![](docs/images/2016-08-25_14h52_08.png)
+![](docs/images/30_job_config_unleash_advanced_hook.png)
 
 ### Use The Plugin
 
@@ -57,33 +57,33 @@ The usage of the plugin is pretty simple and is nothing more than
 submitting a form on a subpage of the project.  
 After you've enabled the plugin a link will be shown on the left side of
 the screen called **Trigger Unleash Maven Plugin**:  
-![](docs/images/Screenshot.png)
+![](docs/images/40_job_use_unleash.png)
 
 After clicking on this link you will be directed to the form page where
-you can start the release build for your project.  
-![](docs/images/2016-08-25_14h53_56.png)
+you can start the release build for your project.
+![](docs/images/50_job_start_unleash_automatic_version_calc.png)
 
 On this page you can either specify a global version for all modules of
 the project (for release and dev) or you stick to the versions provided
-by the plugin and listed in the table which allows idependent versioning
+by the plugin and listed in the table which allows independent versioning
 of modules.  
-You can also provide custom SCM credentials and reqeuest some other
-stuff.  
-![](docs/images/2016-08-25_14h54_06.png)
+You can also provide custom SCM credentials, override the tag name pattern
+and/or SCM message prefix or request some other stuff.  
+![](docs/images/60_job_start_unleash_global_version_calc.png)
 
 ### Release Info
 
 Once you have some successful or failed release builds you can also get
 some project-related release information, such as the badge icons
 indicating successful or failed releases.  
-![](docs/images/2016-07-27_14h05_10.png)
+![](docs/images/70_job_release_info.png)
 
 There are also two permalinks available, one for successful and one for
 failed releases.  
-![](docs/images/Screenshot-1.png)
+![](docs/images/80_job_permalinks.png)
 
 Finally there are some ListView columns:  
-![](docs/images/Screenshot-5.png)
+![](docs/images/90_job_list_view_columns.png)
 
 # Support
 
