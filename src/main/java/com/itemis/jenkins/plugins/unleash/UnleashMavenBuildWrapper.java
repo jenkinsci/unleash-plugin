@@ -166,12 +166,16 @@ public class UnleashMavenBuildWrapper extends BuildWrapper {
       List<String> profiles = Lists.newArrayList();
       for (String profile : split) {
         if (StringUtils.isNotBlank(profile)) {
-          profiles.add(profile.trim());
+          profile = profile.trim();
+          if (StringUtils.startsWith(profile, "-")) {
+            profile = StringUtils.replaceOnce(profile, "-", "!");
+          }
+          profiles.add(profile);
         }
       }
       if (profiles.size() > 0) {
         String listedProfiles = Joiner.on(',').join(profiles);
-        command.append(" -P").append(listedProfiles);
+        command.append(" -P ").append(listedProfiles);
         command.append(" -Dunleash.profiles=").append(listedProfiles);
       }
     }
