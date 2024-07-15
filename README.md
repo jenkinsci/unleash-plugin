@@ -1,5 +1,12 @@
 # Unleash Plugin
 
+[![Jenkins Plugin](https://img.shields.io/jenkins/plugin/v/unleash.svg)](https://plugins.jenkins.io/unleash)
+[![GitHub release](https://img.shields.io/github/release/jenkinsci/unleash-plugin.svg?label=release)](https://github.com/jenkinsci/unleash-plugin/releases/latest)
+[![Jenkins Plugin Installs](https://img.shields.io/jenkins/plugin/i/unleash.svg?color=blue)](https://plugins.jenkins.io/unleash)
+[![GitHub license](https://img.shields.io/github/license/jenkinsci/unleash-plugin?label=license)](./LICENSE)
+[![Build Status](https://ci.jenkins.io/buildStatus/icon?job=Plugins%2Funleash-plugin%2Fmaster)](https://ci.jenkins.io/job/Plugins/job/unleash-plugin/job/master/)
+[![Maintenance](https://img.shields.io/maintenance/yes/2099.svg)]()
+
 This is a Jenkins Build Wrapper for Maven Jobs. It enables you to
 perform Maven releases using the
 [Apache Maven Unleash Plugin](https://github.com/mavenplugins/unleash-maven-plugin).<br>
