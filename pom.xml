@@ -10,7 +10,7 @@
 
   <groupId>io.jenkins.plugins</groupId>
   <artifactId>unleash</artifactId>
-  <version>2.5.1-SNAPSHOT</version>
+  <version>2.5.1</version>
   <packaging>hpi</packaging>
 
   <name>Unleash Maven Plugin</name>
@@ -20,7 +20,7 @@
   <scm>
     <connection>scm:git:https://github.com/jenkinsci/unleash-plugin.git</connection>
     <url>https://github.com/jenkinsci/unleash-plugin</url>
-    <tag>HEAD</tag>
+    <tag>2.5.1</tag>
   </scm>
 
   <licenses>
