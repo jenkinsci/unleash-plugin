@@ -78,7 +78,7 @@
 
     <!-- Dependency versions -->
     <jenkins.version>2.440.3</jenkins.version>
-    <version.unleash-maven-plugin>3.1.0</version.unleash-maven-plugin>
+    <version.unleash-maven-plugin>3.2.0</version.unleash-maven-plugin>
     <version.unleash-scm-provider-git>3.0.1</version.unleash-scm-provider-git>
 
     <!-- Overrides to resolve RequireUpperBoundDeps failure -->
