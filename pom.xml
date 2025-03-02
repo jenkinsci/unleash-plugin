@@ -81,7 +81,7 @@
     <jenkins.baseline>2.440</jenkins.baseline>
     <jenkins.version>${jenkins.baseline}.3</jenkins.version>
     <version.unleash-maven-plugin>3.2.1</version.unleash-maven-plugin>
-    <version.unleash-scm-provider-git>3.2.0</version.unleash-scm-provider-git>
+    <version.unleash-scm-provider-git>3.3.0</version.unleash-scm-provider-git>
 
     <!-- Overrides to resolve RequireUpperBoundDeps failure -->
     <version.javax.annotation-api>1.3.2</version.javax.annotation-api>
