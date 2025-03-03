@@ -30,12 +30,12 @@ import java.util.List;
 import java.util.Map;
 import java.util.logging.Logger;
 
-import javax.servlet.ServletException;
+import jakarta.servlet.ServletException;
 
 import org.apache.commons.lang.StringUtils;
 import org.apache.maven.model.Model;
-import org.kohsuke.stapler.StaplerRequest;
-import org.kohsuke.stapler.StaplerResponse;
+import org.kohsuke.stapler.StaplerRequest2;
+import org.kohsuke.stapler.StaplerResponse2;
 import org.kohsuke.stapler.verb.POST;
 
 import com.google.common.base.Objects;
@@ -299,7 +299,7 @@ public class UnleashAction implements PermalinkProjectAction {
   }
 
   @POST
-  public void doSubmit(StaplerRequest req, StaplerResponse resp) throws IOException, ServletException {
+  public void doSubmit(StaplerRequest2 req, StaplerResponse2 resp) throws IOException, ServletException {
     // verify permission
     this.project.checkPermission(RELEASE_PERMISSION);
 
@@ -331,9 +331,8 @@ public class UnleashAction implements PermalinkProjectAction {
     JSONObject formData = req.getSubmittedForm();
     JSONArray a = JSONArray.fromObject(formData.get("parameter"));
     for (Object o : a) {
-      if (o instanceof JSONObject) {
-        JSONObject jo = (JSONObject) o;
-        if (!jo.isNullObject()) {
+      if (o instanceof JSONObject jo) {
+	      if (!jo.isNullObject()) {
           String name = jo.optString("name");
           if (name != null) {
             ParameterDefinition d = getParameterDefinition(name);
@@ -364,22 +363,22 @@ public class UnleashAction implements PermalinkProjectAction {
   }
 
   static class RequestWrapper {
-    private final StaplerRequest request;
+    private final StaplerRequest2 request;
 
-    public RequestWrapper(StaplerRequest request) throws ServletException {
+    public RequestWrapper(StaplerRequest2 request) {
       this.request = request;
     }
 
-    private String getString(String key) throws javax.servlet.ServletException, java.io.IOException {
+    private String getString(String key) {
       Map<String, ?> parameters = this.request.getParameterMap();
       Object o = parameters.get(key);
       if (o != null) {
-        if (o instanceof String) {
-          return (String) o;
+        if (o instanceof String string) {
+          return string;
         } else if (o.getClass().isArray()) {
           Object firstParam = ((Object[]) o)[0];
-          if (firstParam instanceof String) {
-            return (String) firstParam;
+          if (firstParam instanceof String string) {
+            return string;
           }
         }
       }
@@ -392,12 +391,12 @@ public class UnleashAction implements PermalinkProjectAction {
 
       Object o = parameters.get(key);
       if (o != null) {
-        if (o instanceof String) {
-          flag = (String) o;
+        if (o instanceof String string) {
+          flag = string;
         } else if (o.getClass().isArray()) {
           Object firstParam = ((Object[]) o)[0];
-          if (firstParam instanceof String) {
-            flag = (String) firstParam;
+          if (firstParam instanceof String string) {
+            flag = string;
           }
         }
       }

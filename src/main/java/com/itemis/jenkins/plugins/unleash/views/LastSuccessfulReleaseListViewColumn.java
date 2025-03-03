@@ -23,6 +23,7 @@
  */
 package com.itemis.jenkins.plugins.unleash.views;
 
+import edu.umd.cs.findbugs.annotations.NonNull;
 import org.kohsuke.stapler.DataBoundConstructor;
 
 import com.itemis.jenkins.plugins.unleash.UnleashBadgeAction;
@@ -67,6 +68,7 @@ public class LastSuccessfulReleaseListViewColumn extends ListViewColumn {
 
   @Extension
   public static class DescriptorImpl extends ListViewColumnDescriptor {
+    @NonNull
     @Override
     public String getDisplayName() {
       return "Last Successful Release (unleash-maven-plugin)";

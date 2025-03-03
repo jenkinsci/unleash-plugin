@@ -125,7 +125,7 @@ public class UnleashArgumentInterceptorAction implements MavenArgumentIntercepto
     boolean[] maskArray = mavenargs.toMaskArray();
     ArrayList<Boolean> maskList = Lists.newArrayList();
     for (boolean b : maskArray) {
-      maskList.add(Boolean.valueOf(b));
+      maskList.add(b);
     }
 
     List<String> oldArgumentList = mavenargs.toList();
@@ -145,7 +145,7 @@ public class UnleashArgumentInterceptorAction implements MavenArgumentIntercepto
 
     // rebuild
     for (int i = 0; i < oldArgumentList.size(); i++) {
-      returnListBuilder.add(oldArgumentList.get(i), maskList.get(i).booleanValue());
+      returnListBuilder.add(oldArgumentList.get(i), maskList.get(i));
     }
 
     ensureArgumentsAndMaskHaveSaveSize(returnListBuilder);
