@@ -34,7 +34,7 @@ import org.apache.maven.model.Model;
 import org.kohsuke.stapler.AncestorInPath;
 import org.kohsuke.stapler.DataBoundConstructor;
 import org.kohsuke.stapler.QueryParameter;
-import org.kohsuke.stapler.StaplerRequest;
+import org.kohsuke.stapler.StaplerRequest2;
 import org.kohsuke.stapler.verb.POST;
 
 import com.cloudbees.jenkins.plugins.sshcredentials.SSHUserPrivateKey;
@@ -578,7 +578,7 @@ public class UnleashMavenBuildWrapper extends BuildWrapper {
     }
 
     @Override
-    public boolean configure(StaplerRequest req, JSONObject json) throws hudson.model.Descriptor.FormException {
+    public boolean configure(StaplerRequest2 req, JSONObject json) throws hudson.model.Descriptor.FormException {
       req.bindJSON(this, json);
       save();
       return super.configure(req, json);
