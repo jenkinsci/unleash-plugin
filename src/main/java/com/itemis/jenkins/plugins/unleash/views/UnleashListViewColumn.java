@@ -23,6 +23,7 @@
  */
 package com.itemis.jenkins.plugins.unleash.views;
 
+import edu.umd.cs.findbugs.annotations.NonNull;
 import org.kohsuke.stapler.DataBoundConstructor;
 
 import com.itemis.jenkins.plugins.unleash.UnleashAction;
@@ -43,6 +44,7 @@ public class UnleashListViewColumn extends ListViewColumn {
 
   @Extension
   public static class DescriptorImpl extends ListViewColumnDescriptor {
+    @NonNull
     @Override
     public String getDisplayName() {
       return "Trigger Unleash Maven Plugin";

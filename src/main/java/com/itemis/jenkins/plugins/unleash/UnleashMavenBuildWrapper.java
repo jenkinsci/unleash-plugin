@@ -29,6 +29,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
+import edu.umd.cs.findbugs.annotations.NonNull;
 import org.apache.commons.lang.StringUtils;
 import org.apache.maven.model.Model;
 import org.kohsuke.stapler.AncestorInPath;
@@ -143,8 +144,7 @@ public class UnleashMavenBuildWrapper extends BuildWrapper {
   }
 
   @Override
-  public Environment setUp(@SuppressWarnings("rawtypes") AbstractBuild build, Launcher launcher, BuildListener listener)
-      throws IOException, InterruptedException {
+  public Environment setUp(AbstractBuild build, Launcher launcher, BuildListener listener) {
     if (!isReleaseBuild(build)) {
       return new Environment() {
         @Override
@@ -174,7 +174,7 @@ public class UnleashMavenBuildWrapper extends BuildWrapper {
           profiles.add(profile);
         }
       }
-      if (profiles.size() > 0) {
+      if (!profiles.isEmpty()) {
         String listedProfiles = Joiner.on(',').join(profiles);
         command.append(" -P ").append(listedProfiles);
         command.append(" -Dunleash.profiles=").append(listedProfiles);
@@ -257,13 +257,11 @@ public class UnleashMavenBuildWrapper extends BuildWrapper {
     if (StringUtils.isNotBlank(this.credentialsId)) {
       StandardUsernameCredentials credentials = CredentialsProvider.findCredentialById(this.credentialsId,
           StandardUsernameCredentials.class, build, URIRequirementBuilder.create().build());
-      if (credentials instanceof StandardUsernamePasswordCredentials) {
-        StandardUsernamePasswordCredentials c = (StandardUsernamePasswordCredentials) credentials;
-        scmUsername = c.getUsername();
+      if (credentials instanceof StandardUsernamePasswordCredentials c) {
+	      scmUsername = c.getUsername();
         scmPassword = c.getPassword().getPlainText();
-      } else if (credentials instanceof SSHUserPrivateKey) {
-        SSHUserPrivateKey c = (SSHUserPrivateKey) credentials;
-        Secret passphrase = c.getPassphrase();
+      } else if (credentials instanceof SSHUserPrivateKey c) {
+	      Secret passphrase = c.getPassphrase();
         scmSshPassphrase = passphrase != null ? passphrase.getPlainText() : null;
         final List<String> privKeys = c.getPrivateKeys();
         scmSshPrivateKey = privKeys.isEmpty() ? "" : privKeys.get(0);
@@ -373,7 +371,7 @@ public class UnleashMavenBuildWrapper extends BuildWrapper {
   }
 
   @Override
-  public Collection<? extends Action> getProjectActions(@SuppressWarnings("rawtypes") AbstractProject job) {
+  public Collection<? extends Action> getProjectActions(AbstractProject job) {
     return Collections.singleton(new UnleashAction((MavenModuleSet) job, this.preselectUseGlobalVersion,
         this.preselectAllowLocalReleaseArtifacts, this.preselectCommitBeforeTagging, false, false,
         this.versionUpgradeStrategy, getTagNamePattern(), getScmMessagePrefix()));
@@ -447,9 +445,8 @@ public class UnleashMavenBuildWrapper extends BuildWrapper {
       env.putAll(this.scmEnv);
     }
 
-    @SuppressWarnings("unchecked")
     @Override
-    public boolean tearDown(@SuppressWarnings("rawtypes") AbstractBuild build, BuildListener listener)
+    public boolean tearDown(AbstractBuild build, BuildListener listener)
         throws IOException, InterruptedException {
       int lockedBuilds = 0;
       Result result = build.getResult();
@@ -479,9 +476,7 @@ public class UnleashMavenBuildWrapper extends BuildWrapper {
       UnleashBadgeAction badgeAction = run.getAction(UnleashBadgeAction.class);
       if (badgeAction != null && !run.isBuilding()) {
         Result result = run.getResult();
-        if (result != null && result.isBetterOrEqualTo(Result.UNSTABLE)) {
-          return true;
-        }
+        return result != null && result.isBetterOrEqualTo(Result.UNSTABLE);
       }
       return false;
     }
@@ -572,6 +567,7 @@ public class UnleashMavenBuildWrapper extends BuildWrapper {
       return item instanceof AbstractMavenProject;
     }
 
+    @NonNull
     @Override
     public String getDisplayName() {
       return "Unleash";
@@ -591,8 +587,7 @@ public class UnleashMavenBuildWrapper extends BuildWrapper {
         return new ListBoxModel();
       }
       return new StandardListBoxModel().includeEmptyValue().includeMatchingAs(
-          context instanceof hudson.model.Queue.Task ? Tasks.getAuthenticationOf2((hudson.model.Queue.Task) context)
-              : ACL.SYSTEM2,
+          context instanceof hudson.model.Queue.Task task ? Tasks.getAuthenticationOf2(task) : ACL.SYSTEM2,
           context, StandardUsernameCredentials.class, URIRequirementBuilder.create().build(), CREDENTIALS_MATCHER);
     }
 

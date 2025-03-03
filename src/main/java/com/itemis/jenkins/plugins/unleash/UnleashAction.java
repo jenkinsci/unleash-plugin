@@ -331,9 +331,8 @@ public class UnleashAction implements PermalinkProjectAction {
     JSONObject formData = req.getSubmittedForm();
     JSONArray a = JSONArray.fromObject(formData.get("parameter"));
     for (Object o : a) {
-      if (o instanceof JSONObject) {
-        JSONObject jo = (JSONObject) o;
-        if (!jo.isNullObject()) {
+      if (o instanceof JSONObject jo) {
+	      if (!jo.isNullObject()) {
           String name = jo.optString("name");
           if (name != null) {
             ParameterDefinition d = getParameterDefinition(name);
@@ -374,12 +373,12 @@ public class UnleashAction implements PermalinkProjectAction {
       Map<String, ?> parameters = this.request.getParameterMap();
       Object o = parameters.get(key);
       if (o != null) {
-        if (o instanceof String) {
-          return (String) o;
+        if (o instanceof String string) {
+          return string;
         } else if (o.getClass().isArray()) {
           Object firstParam = ((Object[]) o)[0];
-          if (firstParam instanceof String) {
-            return (String) firstParam;
+          if (firstParam instanceof String string) {
+            return string;
           }
         }
       }
@@ -392,12 +391,12 @@ public class UnleashAction implements PermalinkProjectAction {
 
       Object o = parameters.get(key);
       if (o != null) {
-        if (o instanceof String) {
-          flag = (String) o;
+        if (o instanceof String string) {
+          flag = string;
         } else if (o.getClass().isArray()) {
           Object firstParam = ((Object[]) o)[0];
-          if (firstParam instanceof String) {
-            flag = (String) firstParam;
+          if (firstParam instanceof String string) {
+            flag = string;
           }
         }
       }
