@@ -29,7 +29,6 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
-import edu.umd.cs.findbugs.annotations.NonNull;
 import org.apache.commons.lang.StringUtils;
 import org.apache.maven.model.Model;
 import org.kohsuke.stapler.AncestorInPath;
@@ -56,6 +55,7 @@ import com.itemis.jenkins.plugins.unleash.util.MavenUtil;
 import com.itemis.maven.plugins.unleash.util.MavenVersionUtil;
 import com.itemis.maven.plugins.unleash.util.VersionUpgradeStrategy;
 
+import edu.umd.cs.findbugs.annotations.NonNull;
 import hudson.Extension;
 import hudson.Launcher;
 import hudson.maven.AbstractMavenProject;
@@ -258,10 +258,10 @@ public class UnleashMavenBuildWrapper extends BuildWrapper {
       StandardUsernameCredentials credentials = CredentialsProvider.findCredentialById(this.credentialsId,
           StandardUsernameCredentials.class, build, URIRequirementBuilder.create().build());
       if (credentials instanceof StandardUsernamePasswordCredentials c) {
-	      scmUsername = c.getUsername();
+        scmUsername = c.getUsername();
         scmPassword = c.getPassword().getPlainText();
       } else if (credentials instanceof SSHUserPrivateKey c) {
-	      Secret passphrase = c.getPassphrase();
+        Secret passphrase = c.getPassphrase();
         scmSshPassphrase = passphrase != null ? passphrase.getPlainText() : null;
         final List<String> privKeys = c.getPrivateKeys();
         scmSshPrivateKey = privKeys.isEmpty() ? "" : privKeys.get(0);
@@ -446,8 +446,7 @@ public class UnleashMavenBuildWrapper extends BuildWrapper {
     }
 
     @Override
-    public boolean tearDown(AbstractBuild build, BuildListener listener)
-        throws IOException, InterruptedException {
+    public boolean tearDown(AbstractBuild build, BuildListener listener) throws IOException, InterruptedException {
       int lockedBuilds = 0;
       Result result = build.getResult();
       if (result != null && result.isBetterOrEqualTo(Result.UNSTABLE)) {
@@ -587,8 +586,8 @@ public class UnleashMavenBuildWrapper extends BuildWrapper {
         return new ListBoxModel();
       }
       return new StandardListBoxModel().includeEmptyValue().includeMatchingAs(
-          context instanceof hudson.model.Queue.Task task ? Tasks.getAuthenticationOf2(task) : ACL.SYSTEM2,
-          context, StandardUsernameCredentials.class, URIRequirementBuilder.create().build(), CREDENTIALS_MATCHER);
+          context instanceof hudson.model.Queue.Task task ? Tasks.getAuthenticationOf2(task) : ACL.SYSTEM2, context,
+          StandardUsernameCredentials.class, URIRequirementBuilder.create().build(), CREDENTIALS_MATCHER);
     }
 
     @POST

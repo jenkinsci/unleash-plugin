@@ -30,8 +30,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.logging.Logger;
 
-import jakarta.servlet.ServletException;
-
 import org.apache.commons.lang.StringUtils;
 import org.apache.maven.model.Model;
 import org.kohsuke.stapler.StaplerRequest2;
@@ -57,6 +55,7 @@ import hudson.model.PermalinkProjectAction;
 import hudson.security.Permission;
 import hudson.security.PermissionGroup;
 import hudson.security.PermissionScope;
+import jakarta.servlet.ServletException;
 import jenkins.model.Jenkins;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
@@ -332,7 +331,7 @@ public class UnleashAction implements PermalinkProjectAction {
     JSONArray a = JSONArray.fromObject(formData.get("parameter"));
     for (Object o : a) {
       if (o instanceof JSONObject jo) {
-	      if (!jo.isNullObject()) {
+        if (!jo.isNullObject()) {
           String name = jo.optString("name");
           if (name != null) {
             ParameterDefinition d = getParameterDefinition(name);
