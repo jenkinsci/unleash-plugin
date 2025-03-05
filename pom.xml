@@ -38,16 +38,6 @@
 
   <developers>
     <developer>
-      <id>shillner</id>
-      <name>Stanley Hillner</name>
-      <organization>itemis AG</organization>
-      <organizationUrl>https://itemis.com/</organizationUrl>
-      <timezone>1</timezone>
-      <roles>
-        <role>creator (inactive)</role>
-      </roles>
-    </developer>
-    <developer>
       <id>mhoffrog</id>
       <name>Markus Hoffrogge</name>
       <organization>Rockwell Automation</organization>
@@ -55,6 +45,16 @@
       <timezone>1</timezone>
       <roles>
         <role>maintainer</role>
+      </roles>
+    </developer>
+    <developer>
+      <id>shillner</id>
+      <name>Stanley Hillner</name>
+      <organization>itemis AG</organization>
+      <organizationUrl>https://itemis.com/</organizationUrl>
+      <timezone>1</timezone>
+      <roles>
+        <role>creator (inactive)</role>
       </roles>
     </developer>
   </developers>
@@ -116,12 +116,14 @@
       <version>${version.unleash-maven-plugin}</version>
       <!-- Exclude guava, since this is provided by JenkinsCI -->
       <!-- RequireUpperBoundDeps failure otherwise! -->
-      <exclusions>
-        <exclusion>
-          <groupId>com.google.guava</groupId>
-          <artifactId>guava</artifactId>
-        </exclusion>
-      </exclusions>
+      <!-- Commented since unleash-maven-plugin version 3.2.1 -->
+      <!-- - left in for information purpose only! -->
+      <!--      <exclusions>-->
+      <!--        <exclusion>-->
+      <!--          <groupId>com.google.guava</groupId>-->
+      <!--          <artifactId>guava</artifactId>-->
+      <!--        </exclusion>-->
+      <!--      </exclusions>-->
     </dependency>
   </dependencies>
 
