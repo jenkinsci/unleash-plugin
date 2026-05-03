@@ -18,12 +18,12 @@ That plugin is providing significant advantage for a Maven release process versu
 See unleash-maven-plugin [Wiki](https://github.com/mavenplugins/unleash-maven-plugin/wiki) for details.
 
 
-# 🚀 Dev Continued - Java 8, 11, 17, 21 Ready 🚀 
+# 🚀 Dev Continued - Java 8 to Java 25 Ready 🚀
 
 This plugin has **recovered** from deprecation tagged by 21-Dec-2022 since
 the [Apache Maven Unleash Plugin](https://github.com/mavenplugins/unleash-maven-plugin) did continue to be actively maintained.
 That plugin did move by a new `groupId` to Maven coordinate `io.github.mavenplugins:unleash-maven-plugin`.<br>
-It is working seamlessly for Maven >= 3.3.9 on Java 8, 11, 17 and 21 since unleash-maven-plugin version 3.0.0.
+It is working seamlessly for Maven >= 3.3.9 on Java 8, 11, 17, 21 and 25 since unleash-maven-plugin version 3.0.0.
 
 
 # How To Use The Plugin?
