@@ -79,6 +79,7 @@
     <!-- Dependency versions -->
     <!-- https://www.jenkins.io/doc/developer/plugin-development/choosing-jenkins-baseline/ -->
     <jenkins.baseline>2.479</jenkins.baseline>
+    <ban-commons-lang-2.skip>false</ban-commons-lang-2.skip>
     <jenkins.version>${jenkins.baseline}.3</jenkins.version>
     <ban-junit4-imports.skip>false</ban-junit4-imports.skip>
     <version.unleash-maven-plugin>3.3.3</version.unleash-maven-plugin>
@@ -107,6 +108,10 @@
   </dependencyManagement>
 
   <dependencies>
+    <dependency>
+      <groupId>io.jenkins.plugins</groupId>
+      <artifactId>commons-lang3-api</artifactId>
+    </dependency>
     <dependency>
       <groupId>org.jenkins-ci.main</groupId>
       <artifactId>maven-plugin</artifactId>
